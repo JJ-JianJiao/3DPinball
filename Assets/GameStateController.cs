@@ -54,6 +54,9 @@ public class GameStateController : MonoBehaviour
     public void LoadHighScore() { 
         string dataPath = Path.Combine(Application.persistentDataPath, "Score.txt");
 
+        if (!File.Exists(dataPath))
+            File.Create(dataPath);
+
         using (StreamReader streamReader = File.OpenText(dataPath)) {
             string jsonString = streamReader.ReadToEnd();
 
