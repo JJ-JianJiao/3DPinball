@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-
-    //private Random random = new Random();
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         StartCoroutine(Wait(collider));
@@ -32,7 +18,6 @@ public class DeadZone : MonoBehaviour
             collider.GetComponent<BallController>().life--;
             if (collider.GetComponent<BallController>().life == 0) {
                 int score = collider.GetComponent<BallController>().score/100%100;
-                //if (!GameObject.Find("LifeText").GetComponent<UIController>().extraLife) {
                 if (!GameObject.Find("LifeText").GetComponent<UIController>().extraLife && score == Random.Range(10, 99)) {
                     collider.GetComponent<BallController>().life = 3;
                     GameObject.Find("LifeText").GetComponent<UIController>().extraLife = true;
